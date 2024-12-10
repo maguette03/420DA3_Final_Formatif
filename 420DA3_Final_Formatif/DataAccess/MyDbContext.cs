@@ -11,13 +11,18 @@ namespace _420DA3_Final_Formatif.DataAccess
 {
 
     //doit heriter de DBcontext de entity FrameWork
-    internal class MyDbContext:DbContext
+    internal class MyDbContext : DbContext
     {
 
 
 
         public DbSet<Country> Countries { get; set; }
         public DbSet<Language> Languages { get; set; }
+
+        public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
+        {
+            
+        }
 
 
 
@@ -59,14 +64,14 @@ namespace _420DA3_Final_Formatif.DataAccess
                 .HasColumnName(nameof(Country.ShortName))
                 .HasColumnOrder(1)
                 .HasColumnType($"nvarchar({Country.SHORT_NAME_MAX_LENGTH}")
-                .IsRequired();
+                .IsRequired(true);
 
             _= modelBuilder.Entity<Country>()
                 .Property(c => c.FullName)
                 .HasColumnName(nameof(Country.FullName))
                 .HasColumnOrder(2)
                 .HasColumnType($"nvarchar({Country.FULL_NAME_MAX_LENGTH})")
-                .IsRequired();
+                .IsRequired(true);
 
             _ = modelBuilder.Entity<Country>()
                 .Property(c => c.RowVersion)
@@ -88,14 +93,14 @@ namespace _420DA3_Final_Formatif.DataAccess
                 .HasColumnName(nameof(Language.Name))
                 .HasColumnOrder(1)
                 .HasColumnType($"nvarchar({Language.NAME_MAX_LENGTH})")
-                .IsRequired();
+                .IsRequired(true);
 
             _ = modelBuilder.Entity<Language>()
                 .Property(l => l.IsoCode)
                 .HasColumnName(nameof(Language.IsoCode))
                 .HasColumnOrder(2)
                 .HasColumnType($"nvarchar({Language.ISOCODE_MAX_LENGTH})")
-                .IsRequired();
+                .IsRequired(true);
 
             _ = modelBuilder.Entity<Language>()
                 .Property(l => l.RowVersion)
@@ -124,7 +129,7 @@ namespace _420DA3_Final_Formatif.DataAccess
                 .HasMany(c => c.Languages)
                 .WithMany(l => l.CountriesSpoken)
                 .UsingEntity(
-                "ContryLanguages",
+                "CountriesLanguages",
                     leftRel => leftRel.HasOne(typeof(Language)).WithMany().HasForeignKey("LanguageId"),
                     righRel => righRel.HasOne(typeof(Country)).WithMany().HasForeignKey("CountryId"),
                     conf =>
@@ -136,6 +141,11 @@ namespace _420DA3_Final_Formatif.DataAccess
                         );
                     }
                 );
+
+            /*
+            URGENT APRES LA CONFIGURATION DES ENTITE  POUR  Utilisez le système de migrations de Entity Framework Core pour faire générer la base de
+            données à partir des configurations des entités. IL faut aller DANS Tools puis cliquer sur Nuget Package Manager ensuite  cliquer sur  Package Manager Console  et ecrire ce qui suis pour pouvoi
+            gener la base de donnes " Add-Migration InitialCreate"  apres sa on fait la mis a jour avec " Update-Database"*/
         }
     }
 }

@@ -7,6 +7,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject>_420DA3_Final_Formatif.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
