@@ -43,19 +43,21 @@ namespace _420DA3_Final_Formatif.Business.Domain
                 this.fullName = value;
             }
         }
-        public byte[] Rowversion { get; set; }
+        public byte[] RowVersion { get; set; }
 
         //◦ propriétés de navigation :
         public virtual List<Language> Languages { get; set; } = new List<Language>();
 
 
         //constructeur
-        protected Country(int id, string shortName, string fullName, byte[] rowVersion)
+        
+        public Country() { }
+        public  Country(int id, string shortName, string fullName, byte[] rowVersion)
         {
             this.Id = id;
             this.ShortName = shortName;
             this.FullName = fullName;
-            this.Rowversion = rowVersion;
+            this.RowVersion = rowVersion;
         }
     }
 }

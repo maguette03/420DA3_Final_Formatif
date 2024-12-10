@@ -53,6 +53,8 @@ namespace _420DA3_Final_Formatif.Business.Domain
         public virtual List<Country> CountriesSpoken { get; set; } = new List<Country>();
 
 
+        //Constructeur 
+        public Language() { }
         protected Language(int id, string name , string isoCode , byte[] rowVersion)
         {
             this.Id = id;
