@@ -25,7 +25,7 @@ namespace _420DA3_Final_Formatif.Business.Domain
                 if (value.Length > SHORT_NAME_MAX_LENGTH) {
                     throw new Exception($"La longueur  maximal de ShortName doit etre de {SHORT_NAME_MAX_LENGTH} caractere. ");
                 }
-                this.ShortName = value;
+                this.shortName = value;
             } 
         }
         public string FullName

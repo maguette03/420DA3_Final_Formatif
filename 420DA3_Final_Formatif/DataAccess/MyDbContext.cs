@@ -19,13 +19,6 @@ namespace _420DA3_Final_Formatif.DataAccess
         public DbSet<Country> Countries { get; set; }
         public DbSet<Language> Languages { get; set; }
 
-        public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
-        {
-            
-        }
-
-
-
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
