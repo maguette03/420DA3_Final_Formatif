@@ -16,6 +16,10 @@ namespace _420DA3_Final_Formatif.DataAccess
         {
             this.context = context;
         }
+        public List<Language> GetAll()
+        {
+            return this.context.Languages.ToList();
+        }
 
         public List<Language>GetCountrySpokenLanguages(Country country)
         {
