@@ -59,5 +59,10 @@ namespace _420DA3_Final_Formatif.Business.Domain
             this.FullName = fullName;
             this.RowVersion = rowVersion;
         }
+
+        public override string ToString()
+        {
+            return $"#{this.Id} {this.ShortName} ({this.FullName})";
+        }
     }
 }

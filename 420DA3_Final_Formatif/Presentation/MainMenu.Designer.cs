@@ -30,16 +30,16 @@
         {
             topBarPanel = new Panel();
             buttomBarPanel = new Panel();
+            BtnQuitter = new Button();
             printDialog1 = new PrintDialog();
             centerTabelLayot = new TableLayoutPanel();
             centerPanel = new Panel();
-            btnCreateCountry = new Button();
-            btnView = new Button();
-            btnEdit = new Button();
-            btnDelete = new Button();
-            SearchTextBox = new TextBox();
             searchResults = new ListBox();
-            BtnQuitter = new Button();
+            SearchTextBox = new TextBox();
+            btnDelete = new Button();
+            btnEdit = new Button();
+            btnView = new Button();
+            btnCreateCountry = new Button();
             buttomBarPanel.SuspendLayout();
             centerTabelLayot.SuspendLayout();
             centerPanel.SuspendLayout();
@@ -62,6 +62,16 @@
             buttomBarPanel.Size = new Size(378, 39);
             buttomBarPanel.TabIndex = 1;
             // 
+            // BtnQuitter
+            // 
+            BtnQuitter.Location = new Point(266, 3);
+            BtnQuitter.Name = "BtnQuitter";
+            BtnQuitter.Size = new Size(109, 33);
+            BtnQuitter.TabIndex = 4;
+            BtnQuitter.Text = "Quitter";
+            BtnQuitter.UseVisualStyleBackColor = true;
+            BtnQuitter.Click += BtnQuitter_Click;
+            // 
             // printDialog1
             // 
             printDialog1.UseEXDialog = true;
@@ -70,7 +80,7 @@
             // 
             centerTabelLayot.ColumnCount = 3;
             centerTabelLayot.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            centerTabelLayot.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 250F));
+            centerTabelLayot.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 380F));
             centerTabelLayot.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             centerTabelLayot.Controls.Add(centerPanel, 1, 0);
             centerTabelLayot.Dock = DockStyle.Fill;
@@ -90,42 +100,29 @@
             centerPanel.Controls.Add(btnView);
             centerPanel.Controls.Add(btnCreateCountry);
             centerPanel.Dock = DockStyle.Fill;
-            centerPanel.Location = new Point(67, 3);
+            centerPanel.Location = new Point(2, 3);
             centerPanel.Name = "centerPanel";
-            centerPanel.Size = new Size(244, 260);
+            centerPanel.Size = new Size(374, 260);
             centerPanel.TabIndex = 0;
             // 
-            // btnCreateCountry
+            // searchResults
             // 
-            btnCreateCountry.Location = new Point(3, 3);
-            btnCreateCountry.Name = "btnCreateCountry";
-            btnCreateCountry.Size = new Size(238, 33);
-            btnCreateCountry.TabIndex = 0;
-            btnCreateCountry.Text = "Create New Country";
-            btnCreateCountry.UseVisualStyleBackColor = true;
-            btnCreateCountry.Click += btnCreateCountry_Click;
+            searchResults.FormattingEnabled = true;
+            searchResults.ItemHeight = 25;
+            searchResults.Location = new Point(3, 96);
+            searchResults.Name = "searchResults";
+            searchResults.Size = new Size(338, 129);
+            searchResults.TabIndex = 5;
+            searchResults.SelectedIndexChanged += searchResults_SelectedIndexChanged;
             // 
-            // btnView
+            // SearchTextBox
             // 
-            btnView.Enabled = false;
-            btnView.Location = new Point(3, 224);
-            btnView.Name = "btnView";
-            btnView.Size = new Size(68, 33);
-            btnView.TabIndex = 1;
-            btnView.Text = "View";
-            btnView.UseVisualStyleBackColor = true;
-            btnView.Click += btnView_Click;
-            // 
-            // btnEdit
-            // 
-            btnEdit.Enabled = false;
-            btnEdit.Location = new Point(77, 224);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(72, 33);
-            btnEdit.TabIndex = 2;
-            btnEdit.Text = "Edit";
-            btnEdit.UseVisualStyleBackColor = true;
-            btnEdit.Click += btnEdit_Click;
+            SearchTextBox.Location = new Point(0, 64);
+            SearchTextBox.Name = "SearchTextBox";
+            SearchTextBox.PlaceholderText = "Shearch Countries";
+            SearchTextBox.Size = new Size(341, 31);
+            SearchTextBox.TabIndex = 4;
+            SearchTextBox.TextChanged += SearchTextBox_TextChanged;
             // 
             // btnDelete
             // 
@@ -138,34 +135,37 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
-            // SearchTextBox
+            // btnEdit
             // 
-            SearchTextBox.Location = new Point(0, 64);
-            SearchTextBox.Name = "SearchTextBox";
-            SearchTextBox.PlaceholderText = "Shearch Countries";
-            SearchTextBox.Size = new Size(241, 31);
-            SearchTextBox.TabIndex = 4;
-            SearchTextBox.TextChanged += SearchTextBox_TextChanged;
+            btnEdit.Enabled = false;
+            btnEdit.Location = new Point(77, 224);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(72, 33);
+            btnEdit.TabIndex = 2;
+            btnEdit.Text = "Edit";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
-            // searchResults
+            // btnView
             // 
-            searchResults.FormattingEnabled = true;
-            searchResults.ItemHeight = 25;
-            searchResults.Location = new Point(3, 96);
-            searchResults.Name = "searchResults";
-            searchResults.Size = new Size(235, 104);
-            searchResults.TabIndex = 5;
-            searchResults.SelectedIndexChanged += searchResults_SelectedIndexChanged;
+            btnView.Enabled = false;
+            btnView.Location = new Point(3, 224);
+            btnView.Name = "btnView";
+            btnView.Size = new Size(68, 33);
+            btnView.TabIndex = 1;
+            btnView.Text = "View";
+            btnView.UseVisualStyleBackColor = true;
+            btnView.Click += btnView_Click;
             // 
-            // BtnQuitter
+            // btnCreateCountry
             // 
-            BtnQuitter.Location = new Point(266, 3);
-            BtnQuitter.Name = "BtnQuitter";
-            BtnQuitter.Size = new Size(109, 33);
-            BtnQuitter.TabIndex = 4;
-            BtnQuitter.Text = "Quitter";
-            BtnQuitter.UseVisualStyleBackColor = true;
-            BtnQuitter.Click += BtnQuitter_Click;
+            btnCreateCountry.Location = new Point(3, 3);
+            btnCreateCountry.Name = "btnCreateCountry";
+            btnCreateCountry.Size = new Size(338, 33);
+            btnCreateCountry.TabIndex = 0;
+            btnCreateCountry.Text = "Create New Country";
+            btnCreateCountry.UseVisualStyleBackColor = true;
+            btnCreateCountry.Click += btnCreateCountry_Click;
             // 
             // MainMenu
             // 

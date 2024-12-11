@@ -31,6 +31,11 @@ namespace _420DA3_Final_Formatif.Presentation
 
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
         {
+            this.LoadSearchResult();
+        }
+
+        private  void LoadSearchResult()
+        {
             //on cherche les resultat
             List<Country> result = this.parentApp.CountryServices.SearchCountries(this.SearchTextBox.Text.Trim());
             //on remplie la liste 
@@ -39,10 +44,11 @@ namespace _420DA3_Final_Formatif.Presentation
             //et on vide la liste
             this.searchResults.Items.Clear();
             //on re remplie la liste
-            foreach (Country country in result) {
+            foreach (Country country in result)
+            {
                 this.searchResults.Items.Add(country);
             }
-            
+
         }
 
         private void searchResults_SelectedIndexChanged(object sender, EventArgs e)
@@ -79,7 +85,7 @@ namespace _420DA3_Final_Formatif.Presentation
             if (selectedCountry != null)
             {
                 this.parentApp.CountryServices.OpenViewForModification(selectedCountry);
-                this.searchResults.Refresh();
+                this.LoadSearchResult();
             }
 
         }
@@ -90,6 +96,8 @@ namespace _420DA3_Final_Formatif.Presentation
             if (selectedCountry != null)
             {
                 this.parentApp.CountryServices.OpenViewForDeletion(selectedCountry);
+                this.LoadSearchResult();
+
             }
 
         }
