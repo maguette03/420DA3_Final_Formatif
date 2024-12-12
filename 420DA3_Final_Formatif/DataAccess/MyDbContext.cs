@@ -73,6 +73,7 @@ namespace _420DA3_Final_Formatif.DataAccess
                 .IsRowVersion();
 
 
+            //Pour Language
             
             _=modelBuilder.Entity<Language>()
                 .Property(l => l.Id)
